@@ -10,9 +10,10 @@ m3 = 3;
 g = 9.82;
 t_max = 35; 
 
-[t_vek,x,theta,phi] = amplitude(t_max,d,l,R,g,m1,m2,m3);
-% ovan returnerar xdot, thetadot & phidot.
+[t_vek,x,theta,phi,x_dot,theta_dot,phi_dot] = amplitude(t_max,d,l,R,g,m1,m2,m3);
 
+%% x, theta and phi (task 4)
+figure(1)
 subplot(3, 1, 1);
     plot(t_vek,x,'b') % amplitud x
     xlabel 't (s)'
@@ -32,4 +33,27 @@ subplot(3, 1, 3);
     xlabel 't (s)'
     ylabel 'phi °'
     title 'amplitude phi'
-    
+%% Total energy (task 5)
+T = (m1+5/8*m2+2/3*m3).*x_dot.^2 - (5/8*m2+2/3*m3)*2.*x_dot.*d.*theta_dot.*sin(theta) ...
+    + (5/8*m2+2/3*m3)*d.^2.*theta_dot.^2 + 2/3*m3*(1/4*l^2.*phi_dot.^2+x_dot.*l.*phi_dot.*cos(phi)-2*d*l.*theta_dot.*phi_dot.*sin(theta).*cos(theta));
+ 
+Vg = -m2*g*d.*sin(theta) - m3.*(d.*sin(theta)+1/2*l.*cos(phi));
+
+E = T + Vg; % total energy (kinetic + potential), for each value x_dot, theta, etc.
+
+figure(2)
+subplot(2,1,1);
+plot(t_vek,E)
+xlabel 't (s)'
+ylabel 'E (J)'
+title 'Total energy'
+
+%% Common center of mass (task 6)
+ xg = 1/(2*pi*R+l).*((4*pi*R+2*l).*x+(2*pi*R+2*l)*d.*cos(theta)+1/2*l^2.*sin(phi));
+ yg = 1/(2*pi*R+l).*(-l*d.*sin(theta)+1/2*l^2.*cos(phi));
+ 
+subplot(2,1,2);
+plot(xg,yg)
+xlabel 'x_g (m)'
+ylabel 'y_g (m)'
+title 'Center of mass'
