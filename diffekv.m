@@ -1,5 +1,6 @@
 function ydot = diffekv(t,y,d,l,R,g,m1,m2,m3)
 % Convets second order diff. to firs order, returnd in ydot.
+% (these are later solved by ode45)
 
 % extracting x, x_dot, angles and angular velocitys from y
 x = y(1);
