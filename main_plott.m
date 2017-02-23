@@ -8,7 +8,7 @@ m1 = 1;
 m2 = 2;
 m3 = 3;
 g = 9.82;
-t_max = 35; 
+t_max = 35; %35; 
 
 [t_vek,x,theta,phi,x_dot,theta_dot,phi_dot] = amplitude(t_max,d,l,R,g,m1,m2,m3);
 
@@ -57,3 +57,9 @@ plot(xg,yg)
 xlabel 'x_g (m)'
 ylabel 'y_g (m)'
 title 'Center of mass'
+length(t_vek) % borde vara 8537 med lägre 10^-6 och 10^-10. (1817 med lägre 10^-3 och 10^-6)...
+
+%% Animation (task 7)
+t_scale = 2; %10;
+figure(3)
+anim_y2_2017 (t_vek,x,theta,phi,R,l,d,t_scale)
