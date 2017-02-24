@@ -1,6 +1,6 @@
 clear
 clf
-
+%% Input
 R = 1;
 l = 3;
 d = 4*R/(3*pi);
@@ -34,8 +34,8 @@ subplot(3, 1, 3);
     ylabel 'phi °'
     title 'amplitude phi'
 %% Total energy (task 5)
-T = (m1+5/8*m2+2/3*m3).*x_dot.^2 - (5/8*m2+2/3*m3)*2.*x_dot.*d.*theta_dot.*sin(theta) ...
-    + (5/8*m2+2/3*m3)*d.^2.*theta_dot.^2 + 2/3*m3*(1/4*l^2.*phi_dot.^2+x_dot.*l.*phi_dot.*cos(phi)-2*d*l.*theta_dot.*phi_dot.*sin(theta).*cos(theta));
+T = (m1+5/8*m2+13/24*m3).*x_dot.^2 - (5/8*m2+13/24*m3)*2.*x_dot.*d.*theta_dot.*sin(theta) ...
+    + (5/8*m2+13/24*m3)*d.^2.*theta_dot.^2 + 13/24*m3*(1/4*l^2.*phi_dot.^2+x_dot.*l.*phi_dot.*cos(phi)-d*l.*theta_dot.*phi_dot.*sin(theta-phi));
  
 Vg = -m2*g*d.*sin(theta) - m3.*(d.*sin(theta)+1/2*l.*cos(phi));
 
@@ -57,7 +57,6 @@ plot(xg,yg)
 xlabel 'x_g (m)'
 ylabel 'y_g (m)'
 title 'Center of mass'
-length(t_vek) % borde vara 8537 med lägre 10^-6 och 10^-10. (1817 med lägre 10^-3 och 10^-6)...
 
 %% Animation (task 7)
 t_scale = 2; %10;
