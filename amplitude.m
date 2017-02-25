@@ -2,6 +2,7 @@ function [t_vek, x, theta, phi, x_dot, theta_dot, phi_dot] = amplitude(t_max,d,l
 % Solves first order diffs. with ode45
 
 options = odeset('RelTol', 1e-06, 'AbsTol', 1e-10);
+%options = odeset('RelTol', 1e-03, 'AbsTol', 1e-6); % standard
 
 % Start values
 y0=[0,0,pi/4,0,pi,0];

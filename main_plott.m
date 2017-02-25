@@ -1,4 +1,4 @@
-clear
+                                                                                                                                                  clear
 clf
 %% Input
 R = 1;
@@ -37,7 +37,7 @@ subplot(3, 1, 3);
 T = (m1+5/8*m2+13/24*m3).*x_dot.^2 - (5/8*m2+13/24*m3)*2.*x_dot.*d.*theta_dot.*sin(theta) ...
     + (5/8*m2+13/24*m3)*d.^2.*theta_dot.^2 + 13/24*m3*(1/4*l^2.*phi_dot.^2+x_dot.*l.*phi_dot.*cos(phi)-d*l.*theta_dot.*phi_dot.*sin(theta-phi));
  
-Vg = -m2*g*d.*sin(theta) - m3.*(d.*sin(theta)+1/2*l.*cos(phi));
+Vg = -m2*g*d.*sin(theta) - m3*g.*(d.*sin(theta)+1/2*l.*cos(phi));
 
 E = T + Vg; % total energy (kinetic + potential), for each value x_dot, theta, etc.
 
@@ -50,7 +50,8 @@ title 'Total energy'
 
 %% Common center of mass (task 6)
  xg = 1/(2*pi*R+l).*((4*pi*R+2*l).*x+(2*pi*R+2*l)*d.*cos(theta)+1/2*l^2.*sin(phi));
- yg = 1/(2*pi*R+l).*(-l*d.*sin(theta)+1/2*l^2.*cos(phi));
+ yg = -1/(2*pi*R+l)*((2*pi+2*l)*d.*sin(theta)+1/2*l^2.*cos(phi));
+
  
 subplot(2,1,2);
 plot(xg,yg)
